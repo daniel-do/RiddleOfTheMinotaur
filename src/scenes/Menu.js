@@ -51,7 +51,7 @@ class Menu extends Phaser.Scene {
 		keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
 	}
 	update() {
-		this.title_image.y = 60 + (Math.sin(this.game.loop.frame * 0.04) * 4);
+		this.title_image.y = 46 + (Math.sin(this.game.loop.frame * 0.04) * 4);
 		this.cursor.x = ((this.game.config.width / 2) - 20 + Math.sin(this.game.loop.frame * 0.1) * 4) - (this.choices[this.selection].text.width/2);
 		this.cursor.y = 94 + (this.selection * 20);
 
