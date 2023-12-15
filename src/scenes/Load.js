@@ -18,3 +18,5 @@ class Load extends Phaser.Scene {
     this.scene.start('MENU');
   }
 }
+
+export default Load;

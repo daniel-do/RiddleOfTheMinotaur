@@ -1,0 +1,31 @@
+{
+  "name": "riddleoftheminotaur",
+  "version": "0.0.1",
+  "description": "procedural generated maze in Phaser 3",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-do/RiddleOfTheMinotaur.git"
+  },
+  "keywords": [
+    "phaser3",
+    "games",
+    "procedural",
+    "generation"
+  ],
+  "homepage": "https://github.com/daniel-do/RiddleOfTheMinotaur#readme",
+  "dependencies": {
+    "generate-maze": "^0.2.0",
+    "phaser": "^3.15.1"
+  },
+  "devDependencies": {
+    "raw-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}

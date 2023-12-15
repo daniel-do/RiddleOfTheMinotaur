@@ -1,3 +1,5 @@
+let keyUP, keyDOWN, keyENTER;
+
 class Menu extends Phaser.Scene {
 	constructor() {
 		super('MENU')
@@ -12,15 +14,18 @@ class Menu extends Phaser.Scene {
 		this.choices = [
 			{
 				name: "play",
-				key: "INGAME"
+				key: "boot",
+				size: 80
 			},
 			{
 				name: "controls",
-				key: "CONTROLS"
+				key: "CONTROLS",
+				size: 80
 			},
 			{
 				name: "credits",
-				key: "CREDITS"
+				key: "CREDITS",
+				size: 80
 			},
 		];
 	}
@@ -40,10 +45,15 @@ class Menu extends Phaser.Scene {
 		this.canSelect = true;
 		this.cursor = this.add.image(0, 100, 'cursor').setOrigin(0, 0);
 		this.choices.forEach((choice, index) => {
-			choice.text = this.add.bitmapText(this.game.config.width / 2, 100 + (20 * index), 'pixel_font', choice.name, 16).setCenterAlign();
+			choice.text = this.add.bitmapText(this.game.config.width / 4, 540 + (80 * index), 'pixel_font', choice.name, choice.size).setCenterAlign();
 			choice.text.setOrigin(0.5);
 
 		});
+		this.add.bitmapText(this.game.config.width / 2, 504, 'pixel_font', "YOUR GOAL:", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2, 540, 'pixel_font', "answer riddles throughout the", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2, 576, 'pixel_font', "maze to get to the exit", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2, 640, 'pixel_font', "arrow keys to move selection", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2, 676, 'pixel_font', "ENTER to select", 36).setCenterAlign();
 
 		// define keys
 		keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)
@@ -51,9 +61,9 @@ class Menu extends Phaser.Scene {
 		keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
 	}
 	update() {
-		this.title_image.y = 46 + (Math.sin(this.game.loop.frame * 0.04) * 4);
-		this.cursor.x = ((this.game.config.width / 2) - 20 + Math.sin(this.game.loop.frame * 0.1) * 4) - (this.choices[this.selection].text.width/2);
-		this.cursor.y = 94 + (this.selection * 20);
+		this.title_image.y = 250 + (Math.sin(this.game.loop.frame * 0.04) * 20);
+		this.cursor.x = ((this.game.config.width / 2) - 20 + Math.sin(this.game.loop.frame * 0.1) * 10) - (this.choices[this.selection].text.width/2) - 320;
+		this.cursor.y = 494 + (this.selection * 80);
 
 		if (Phaser.Input.Keyboard.JustDown(keyUP)) {
 			if (this.selection - 1 > -1 && this.selection - 1 < this.choices.length) {
@@ -73,3 +83,5 @@ class Menu extends Phaser.Scene {
         }
 	}
 }
+
+export default Menu;

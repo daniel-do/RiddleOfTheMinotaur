@@ -1,3 +1,5 @@
+let keyUP, keyDOWN, keyENTER;
+
 class Credits extends Phaser.Scene {
 	constructor() {
 		super('CREDITS')
@@ -13,30 +15,30 @@ class Credits extends Phaser.Scene {
 			{
 				name: "credits",
 				key: "CONTROLS",
-                size: 16
+                size: 200
 			},
             {
-				name: "development",
+				name: "development, design, art: Daniel Do",
 				key: "MENU",
-                size: 10
+                size: 60
 			},
             {
-				name: "art",
-                size: 10
+				name: "procedural maze generation: Quinten",
+                size: 60
 			},
             {
 				name: "sound",
-                size: 10
+                size: 60
 			},
 			{
 				name: "controls",
 				key: "CONTROLS",
-                size: 16
+                size: 100
 			},
 			{
 				name: "back",
 				key: "MENU",
-                size: 16
+                size: 100
 			},
 		];
 	}
@@ -50,7 +52,7 @@ class Credits extends Phaser.Scene {
 		this.canSelect = true;
 		this.cursor = this.add.image(0, 100, 'cursor').setOrigin(0, 0);
 		this.choices.forEach((choice, index) => {
-			choice.text = this.add.bitmapText(this.game.config.width / 2, 40 + (20 * (index)), 'pixel_font', choice.name, choice.size).setCenterAlign();
+			choice.text = this.add.bitmapText(this.game.config.width / 2, 140 + (100 * (index)), 'pixel_font', choice.name, choice.size).setCenterAlign();
 			choice.text.setOrigin(0.5);
 
 		});
@@ -61,8 +63,8 @@ class Credits extends Phaser.Scene {
 		keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
 	}
 	update() {
-		this.cursor.x = ((this.game.config.width / 2) - 20 + Math.sin(this.game.loop.frame * 0.1) * 4) - (this.choices[this.selection + 4].text.width/2);
-		this.cursor.y = 94 + (20 + ((this.selection) * 20));
+		this.cursor.x = ((this.game.config.width / 2) - 20 + Math.sin(this.game.loop.frame * 0.1) * 10) - (this.choices[this.selection + 4].text.width/2) - 100;
+		this.cursor.y = 494 + (this.selection) * 100;
 
 		if (Phaser.Input.Keyboard.JustDown(keyUP)) {
 			if (this.selection - 1 > -1 && this.selection - 1 < this.choices.length) {
@@ -82,3 +84,5 @@ class Credits extends Phaser.Scene {
         }
 	}
 }
+
+export default Credits;
