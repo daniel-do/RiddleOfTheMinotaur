@@ -56,54 +56,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 repeat: -1
             });
         }
-        if (!anims.get('jump-left')) {
-            anims.create({
-                key: 'jump-left',
-                frames: anims.generateFrameNumbers('player', { start: 9, end: 9 }),
-                frameRate: 10,
-                repeat: -1
-            });
-        }
-        if (!anims.get('jump-right')) {
-            anims.create({
-                key: 'jump-right',
-                frames: anims.generateFrameNumbers('player', { start: 4, end: 4 }),
-                frameRate: 10,
-                repeat: -1
-            });
-        }
-        if (!anims.get('flail-left')) {
-            anims.create({
-                key: 'flail-left',
-                frames: anims.generateFrameNumbers('player', { start: 9, end: 9 }),
-                frameRate: 10,
-                repeat: -1
-            });
-        }
-        if (!anims.get('flail-right')) {
-            anims.create({
-                key: 'flail-right',
-                frames: anims.generateFrameNumbers('player', { start: 4, end: 4 }),
-                frameRate: 10,
-                repeat: -1
-            });
-        }
-        if (!anims.get('slide-left')) {
-            anims.create({
-                key: 'slide-left',
-                frames: anims.generateFrameNumbers('player', { start: 10, end: 10 }),
-                frameRate: 10,
-                repeat: -1
-            });
-        }
-        if (!anims.get('slide-right')) {
-            anims.create({
-                key: 'slide-right',
-                frames: anims.generateFrameNumbers('player', { start: 11, end: 11 }),
-                frameRate: 10,
-                repeat: -1
-            });
-        }
     }
 
     update(controls, time, delta) {
@@ -112,17 +64,15 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             return;
         }
 
-        // in a later tutorial i will show you how you can climb and swim
         this.runAndJump(controls, time, delta);
 
-        // don't forget to animate :)
         this.anims.play(this.ani, true);
     }
 
     runAndJump(controls, time, delta)
     {
         this.body.setVelocityX(0);
-        this.body.allowGravity = true;
+        this.body.setVelocityY(0);
 
         if (controls.left) {
 
@@ -142,10 +92,27 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.facing = 'right';
             this.idle = false;
 
+        } else if (controls.up) {
+
+            this.moveSpeed -= this.speedChange;
+            this.moveSpeed = Math.max(this.moveSpeed, -this.speedMax);
+            this.body.setVelocityY(this.moveSpeed);
+
+            this.idle = false;
+
+        } else if (controls.down) {
+
+            this.moveSpeed += this.speedChange;
+            this.moveSpeed = Math.min(this.moveSpeed, this.speedMax);
+            this.body.setVelocityY(this.moveSpeed);
+
+            this.idle = false;
+
         } else {
 
             this.moveSpeed += (0 - this.moveSpeed) / 2;
             this.body.setVelocityX(this.moveSpeed);
+            this.body.setVelocityY(this.moveSpeed);
 
             this.idle = true;
 
@@ -164,53 +131,22 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             }
         }
 
-        if (this.body.onFloor()) {
+        if (this.idle) {
 
-            if (this.idle) {
-
-                if (this.facing === 'left') {
-                    this.ani = 'idle-left';
-                } else {
-                    this.ani = 'idle-right';
-                }
-
+            if (this.facing === 'left') {
+                this.ani = 'idle-left';
             } else {
-
-                if (this.facing === 'left') {
-                    this.ani = 'run-left';
-                } else {
-                    this.ani = 'run-right';
-                }
-
+                this.ani = 'idle-right';
             }
 
         } else {
 
-             if (this.body.blocked.left) {
-
-                this.ani = 'slide-left';
-
-             } else if (this.body.blocked.right) {
-
-                this.ani = 'slide-right';
-
-            } else if (this.body.velocity.y < 0) {
-
-                if (this.facing === 'left') {
-                    this.ani = 'jump-left';
-                } else {
-                    this.ani = 'jump-right';
-                }
-
+            if (this.facing === 'left') {
+                this.ani = 'run-left';
             } else {
-
-                if (this.facing === 'left') {
-                    this.ani = 'flail-left';
-                } else {
-                    this.ani = 'flail-right';
-                }
-
+                this.ani = 'run-right';
             }
+
         }
     }
 
