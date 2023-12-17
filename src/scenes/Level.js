@@ -85,7 +85,7 @@ class Level extends Phaser.Scene {
                 this.sys.game.config.height = 1125;
                 this.sys.canvas.style.width = 1125 + 'px';
                 this.sys.canvas.style.height = 730 + 'px';
-                this.scene.start("LOAD");
+                this.scene.start("MENU");
             }
         }
     }

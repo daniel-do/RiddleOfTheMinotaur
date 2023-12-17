@@ -16,6 +16,10 @@ class Load extends Phaser.Scene {
   }
   create(){
     this.scene.start('MENU');
+    // background music
+    this.batman_robin_ost = this.sound.add("batman_robin_ost", {volume: 0.5})
+    this.batman_robin_ost.loop = true
+    this.batman_robin_ost.play()
   }
 }
 

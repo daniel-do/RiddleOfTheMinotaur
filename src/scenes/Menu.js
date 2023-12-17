@@ -30,11 +30,6 @@ class Menu extends Phaser.Scene {
 		];
 	}
 	create() {
-		// background music
-        this.batman_robin_ost = this.sound.add("batman_robin_ost", {volume: 0.5})
-        this.batman_robin_ost.loop = true
-        this.batman_robin_ost.play()
-
 		// Import sounds
         this.scroll = this.sound.add('minecraft_menu_click')
         this.select = this.sound.add('select')
