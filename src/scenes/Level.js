@@ -81,10 +81,10 @@ class Level extends Phaser.Scene {
         for (let exit of this.exits) {
             if (Phaser.Geom.Rectangle.ContainsPoint(exit.rect, this.player)) {
                 // Resize game configs
-                this.sys.game.renderer.resize(885, 730, 1.0);
-                this.sys.game.config.width = 885;
-                this.sys.game.config.height = 730;
-                this.sys.canvas.style.width = 885 + 'px';
+                this.sys.game.renderer.resize(1125, 730, 1.0);
+                this.sys.game.config.width = 1125;
+                this.sys.game.config.height = 1125;
+                this.sys.canvas.style.width = 1125 + 'px';
                 this.sys.canvas.style.height = 730 + 'px';
                 this.scene.start("LOAD");
             }

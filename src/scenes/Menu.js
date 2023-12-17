@@ -31,7 +31,7 @@ class Menu extends Phaser.Scene {
 	}
 	create() {
 		// background music
-        this.batman_robin_ost = this.sound.add("batman_robin_ost")
+        this.batman_robin_ost = this.sound.add("batman_robin_ost", {volume: 0.5})
         this.batman_robin_ost.loop = true
         this.batman_robin_ost.play()
 
@@ -62,8 +62,8 @@ class Menu extends Phaser.Scene {
 		keyENTER = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER)
 	}
 	update() {
-		this.title_image.y = 250 + (Math.sin(this.game.loop.frame * 0.04) * 20);
-		this.cursor.x = ((this.game.config.width / 2) - 20 + Math.sin(this.game.loop.frame * 0.1) * 10) - (this.choices[this.selection].text.width/2) - 320;
+		this.title_image.y = 240 + (Math.sin(this.game.loop.frame * 0.04) * 20);
+		this.cursor.x = ((this.game.config.width / 2) - 20 + Math.sin(this.game.loop.frame * 0.1) * 10) - (this.choices[this.selection].text.width/2) - 380;
 		this.cursor.y = 494 + (this.selection * 80);
 
 		if (Phaser.Input.Keyboard.JustDown(keyUP)) {

@@ -27,7 +27,7 @@ class Credits extends Phaser.Scene {
                 size: 60
 			},
             {
-				name: "sounds: Minecraft and Mario",
+				name: "sounds: Batman, Minecraft, and Mario",
                 size: 60
 			},
 			{

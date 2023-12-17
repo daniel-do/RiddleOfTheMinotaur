@@ -24,7 +24,7 @@ let zoom = 2 * Math.max(1, Math.floor(longestSide / window.maxSize));
 var config = {
     type: Phaser.AUTO,
     parent: 'phaser-game',
-    width: 885,
+    width: 1125,
     height: 730,
     backgroundColor: '#8190A7',
     pixelArt: true,

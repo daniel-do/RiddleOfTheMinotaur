@@ -27,7 +27,7 @@ class Controls extends Phaser.Scene {
                 size: 60
 			},
             {
-				name: "exit thru entrance = back to menu",
+				name: "exit through the entrance = back to menu",
                 size: 60
 			},
 			{

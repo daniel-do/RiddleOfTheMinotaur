@@ -88,11 +88,11 @@ class MazeLevel extends Level {
         this.prompt3.setVisible(false);
         this.prompt4 = this.add.image(this.dragon4.x, this.dragon4.y, 'prompt4');
         this.prompt4.setVisible(false);
-        this.prompt5 = this.add.image(this.dragon5.x, this.dragon5.y - 200, 'prompt5');
+        this.prompt5 = this.add.image(this.dragon5.x, this.dragon5.y - 100, 'prompt5');
         this.prompt5.setVisible(false);
-        this.prompt6 = this.add.image(this.dragon6.x, this.dragon6.y - 200, 'prompt6');
+        this.prompt6 = this.add.image(this.dragon6.x, this.dragon6.y - 100, 'prompt6');
         this.prompt6.setVisible(false);
-        this.prompt7 = this.add.image(this.dragon7.x - 200, this.dragon7.y, 'prompt7');
+        this.prompt7 = this.add.image(this.dragon7.x - 100, this.dragon7.y, 'prompt7');
         this.prompt7.setVisible(false);
         this.promptLast = this.add.image(this.dragonLast.x, this.dragonLast.y, 'promptLast');
         this.promptLast.setVisible(false);
@@ -112,8 +112,8 @@ class MazeLevel extends Level {
         keyTHREE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
 
         // Import sounds
-        this.correctAnswer = this.sound.add('correctAnswer', {volume: 0.5});
-        this.wrongAnswer = this.sound.add('wrongAnswer', {volume: 2});
+        this.correctAnswer = this.sound.add('correctAnswer', {volume: 0.25});
+        this.wrongAnswer = this.sound.add('wrongAnswer', {volume: 3});
 
     }
 
