@@ -9,7 +9,7 @@ class Preloader extends Phaser.Scene {
 
     preload ()
     {
-        // just a preload bar in graphics
+        // preload bar in graphics
         let progress = this.add.graphics();
         this.load.on('progress', (value) => {
             progress.clear();
@@ -20,8 +20,7 @@ class Preloader extends Phaser.Scene {
             progress.destroy();
         });
 
-        // Load assets here
-        // ...
+        // Load assets
         this.load.image('tiles', 'assets/tiles.png');
         for (let m = 0; m < 16; m++) {
             this.load.tilemapTiledJSON('map' + m, 'assets/map' + m + '.json');

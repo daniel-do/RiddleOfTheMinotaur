@@ -33,8 +33,6 @@ class MazeLevel extends Level {
     {
         super.create();
 
-        // setup stuff
-
         // Add the player
         this.addPlayer({ x: this.startPosition.x, y: this.startPosition.y });
 
@@ -72,6 +70,7 @@ class MazeLevel extends Level {
         // (see Level.js)
         this.postCreate();
 
+        // import images
         this.dragon1 = this.add.image(192, 192, 'dragon').setScale(0.2);
         this.dragon2 = this.add.image(832, 320, 'dragon').setScale(0.2);
         this.dragon3 = this.add.image(576, 704, 'dragon').setScale(0.2);
@@ -121,6 +120,8 @@ class MazeLevel extends Level {
     {
         this.player.update(this.controls, time, delta);
         this.checkExits();
+
+        // move dragons up and down
         this.dragon1.y = 192 + (Math.sin(this.game.loop.frame * 0.04) * 10);
         this.dragon2.y = 320 + (Math.sin(this.game.loop.frame * 0.04) * 10);
         this.dragon3.y = 704 + (Math.sin(this.game.loop.frame * 0.04) * 10);
@@ -132,6 +133,7 @@ class MazeLevel extends Level {
 
         // best university
         if (this.prompt1Activated == false) {
+            // if player is near the dragon
             if (this.player.x >= (this.dragon1.x - 30) && this.player.x <= (this.dragon1.x + 30) && this.player.y >= (this.dragon1.y - 30) && this.player.y <= (this.dragon1.y + 30)) {
                 this.prompt1.setVisible(true);
                 this.dragon1.destroy();

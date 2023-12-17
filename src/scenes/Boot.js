@@ -10,9 +10,6 @@ class Boot extends Phaser.Scene {
 
     create ()
     {
-        // more setup stuff here
-        // ...
-
         this.sys.game.events.on('pause', () => {
             for (let scene of this.scene.manager.scenes) {
                 if (scene.scene.settings.active) {
@@ -59,10 +56,6 @@ class Boot extends Phaser.Scene {
             this.blurredScene = undefined;
         }, this);
 
-        // This will make your game responsive.
-        window.onresize = this.onWindowResize.bind(this);
-        this.onWindowResize();
-
         this.scene.start('preloader');
     }
 
@@ -87,7 +80,6 @@ class Boot extends Phaser.Scene {
             }
             if (scene.scene.settings.active) {
                 if (scene.resizeField) {
-                    // Scale/position stuff in the scene itself with this method, that the scene must implement.
                     scene.resizeField(w, h);
                 }
             }

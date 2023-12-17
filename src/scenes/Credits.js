@@ -67,13 +67,13 @@ class Credits extends Phaser.Scene {
 		this.cursor.y = 494 + (this.selection) * 100;
 
 		if (Phaser.Input.Keyboard.JustDown(keyUP)) {
-			if (this.selection - 1 > -1 && this.selection - 1 < this.choices.length) {
+			if (this.selection - 1 > -1 && this.selection - 1 < this.choices.length - 4) {
 				this.selection -= 1;
 				this.scroll.play();
 			}
 		}
 		if (Phaser.Input.Keyboard.JustDown(keyDOWN)) {
-			if (this.selection + 1 > -1 && this.selection + 1 < this.choices.length) {
+			if (this.selection + 1 > -1 && this.selection + 1 < this.choices.length - 4) {
 				this.selection += 1;
 				this.scroll.play();
 			}

@@ -12,12 +12,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.setOffset(12, 8, true);
         this.setCollideWorldBounds(true);
 
-        // tweak stuff
         this.speedMax = 120;
         this.speedChange = 10;
         this.jumpPower = 278;
 
-        // not tweakable
         this.facing = facing || 'right';
         this.idle = false;
         this.jumpTimer = 0;

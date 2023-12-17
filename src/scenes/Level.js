@@ -37,7 +37,6 @@ class Level extends Phaser.Scene {
         this.gamepaused.setScrollFactor(0);
         this.gamepaused.setDepth(3);
 
-        //console.log(this);
         this.resizeField(this.sys.game.config.width, this.sys.game.config.height);
         this.cameras.main.flash(3000, fadeColor.r, fadeColor.g, fadeColor.b);
     }
@@ -110,7 +109,6 @@ class Level extends Phaser.Scene {
 
     resizeField(w, h)
     {
-        //console.log(w, h);
         this.gamepaused.x = w / 2;
         this.gamepaused.y = h / 2;
         if (this.centerMap) {

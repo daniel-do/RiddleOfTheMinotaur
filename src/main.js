@@ -29,7 +29,6 @@ var config = {
     backgroundColor: '#8190A7',
     pixelArt: true,
     zoom: zoom,
-    //scale: Phaser.Scale.FIT,
     physics: {
         default: 'arcade',
         arcade: {}
