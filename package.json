@@ -2,7 +2,7 @@
   "name": "riddleoftheminotaur",
   "version": "0.0.1",
   "description": "procedural generated maze in Phaser 3",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d pub",

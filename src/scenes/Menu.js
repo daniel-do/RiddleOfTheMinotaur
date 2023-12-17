@@ -49,11 +49,12 @@ class Menu extends Phaser.Scene {
 			choice.text.setOrigin(0.5);
 
 		});
-		this.add.bitmapText(this.game.config.width / 2, 504, 'pixel_font', "YOUR GOAL:", 36).setCenterAlign();
-		this.add.bitmapText(this.game.config.width / 2, 540, 'pixel_font', "answer riddles throughout the", 36).setCenterAlign();
-		this.add.bitmapText(this.game.config.width / 2, 576, 'pixel_font', "maze to get to the exit", 36).setCenterAlign();
-		this.add.bitmapText(this.game.config.width / 2, 640, 'pixel_font', "arrow keys to move selection", 36).setCenterAlign();
-		this.add.bitmapText(this.game.config.width / 2, 676, 'pixel_font', "ENTER to select", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2 - 70, 486, 'pixel_font', "YOUR GOAL:", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2 - 70, 522, 'pixel_font', "answer riddles throughout the maze", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2 - 70, 558, 'pixel_font', "by encountering monsters that are", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2 - 70, 594, 'pixel_font', "blocking your path to get to the exit", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2 - 70, 666, 'pixel_font', "arrow keys to move selection", 36).setCenterAlign();
+		this.add.bitmapText(this.game.config.width / 2 - 70, 702, 'pixel_font', "ENTER to select", 36).setCenterAlign();
 
 		// define keys
 		keyUP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP)

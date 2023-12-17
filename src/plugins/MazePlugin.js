@@ -1,3 +1,5 @@
+// Credit: Quinten https://github.com/Quinten/phaser3-maze-demo/tree/master
+
 import generator from 'generate-maze';
 
 class MazePlugin extends Phaser.Plugins.BasePlugin

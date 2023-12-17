@@ -1,3 +1,5 @@
+// Credit: Quinten https://github.com/Quinten/phaser3-maze-demo/tree/master
+
 class SimplePlatformerControls extends Phaser.Plugins.ScenePlugin {
 
     constructor (scene, pluginManager) {

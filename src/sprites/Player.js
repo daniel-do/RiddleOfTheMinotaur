@@ -1,3 +1,5 @@
+// Credit: Quinten https://github.com/Quinten/phaser3-maze-demo/tree/master
+
 class Player extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene, x, y, key, frame, facing) {
@@ -64,12 +66,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             return;
         }
 
-        this.runAndJump(controls, time, delta);
+        this.movement(controls, time, delta);
 
         this.anims.play(this.ani, true);
     }
 
-    runAndJump(controls, time, delta)
+    movement(controls, time, delta)
     {
         this.body.setVelocityX(0);
         this.body.setVelocityY(0);
@@ -116,19 +118,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
             this.idle = true;
 
-        }
-
-        if (controls.aDown && (this.body.onFloor() || this.body.onWall()) && time > this.jumpTimer) {
-            this.body.setVelocityY(-this.jumpPower);
-            this.jumpTimer = time + 250;
-
-            if (this.body.blocked.left) {
-                this.moveSpeed = this.speedMax;
-                this.setVelocityX(this.moveSpeed);
-            } else if (this.body.blocked.right) {
-                this.moveSpeed = -this.speedMax;
-                this.setVelocityX(this.moveSpeed);
-            }
         }
 
         if (this.idle) {

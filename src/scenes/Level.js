@@ -1,4 +1,8 @@
+// Credit: Quinten https://github.com/Quinten/phaser3-maze-demo/tree/master
+
 import Player from '../sprites/Player.js';
+
+let keyONE, keyTWO, keyTHREE;
 
 class Level extends Phaser.Scene {
 
@@ -11,6 +15,10 @@ class Level extends Phaser.Scene {
         this.exits = undefined;
     }
 
+    preload() {
+		this.load.image('riddle', './assets/riddle.png');
+	}
+
     create()
     {
         this.cameras.main.setRoundPixels(true);
@@ -19,6 +27,7 @@ class Level extends Phaser.Scene {
 
         this.exits = [];
         this.cameras.main.setBackgroundColor('#00FF00');
+
     }
 
     postCreate()
@@ -71,10 +80,13 @@ class Level extends Phaser.Scene {
         }
         for (let exit of this.exits) {
             if (Phaser.Geom.Rectangle.ContainsPoint(exit.rect, this.player)) {
+                // Resize game configs
+                this.sys.game.renderer.resize(885, 730, 1.0);
+                this.sys.game.config.width = 885;
+                this.sys.game.config.height = 730;
+                this.sys.canvas.style.width = 885 + 'px';
+                this.sys.canvas.style.height = 730 + 'px';
                 this.scene.start("LOAD");
-                /**this.leaveThroughExit(exit);
-                this.player.disappear();
-                this.exits = [];**/
             }
         }
     }
