@@ -1,42 +1,43 @@
 let keyUP, keyDOWN, keyENTER;
 
-class Controls extends Phaser.Scene {
+class Victory extends Phaser.Scene {
 	constructor() {
-		super('CONTROLS')
+		super('VICTORY')
 	}
 	preload() {
 		this.load.image('cursor', './assets/cursor.png');
 		this.load.image('background', './assets/menu_background.png');
 		this.load.image('title_image', './assets/title_image.png');
+        this.load.audio('victory', './assets/victory.mp3');
 	}
 	init(data) {
 		this.selection = 0;
 		this.choices = [
 			{
-				name: "controls",
+				name: "congrats",
 				key: "CREDITS",
                 size: 200
 			},
             {
-				name: "arrows = move",
+				name: "",
 				key: "MENU",
                 size: 60
 			},
             {
-				name: "enter = select",
+				name: "you have made it to the end of the maze!",
                 size: 60
 			},
             {
-				name: "r = reset level",
+				name: "",
                 size: 60
 			},
 			{
-				name: "credits",
-				key: "CREDITS",
+				name: "play again",
+				key: "boot",
                 size: 100
 			},
 			{
-				name: "back",
+				name: "menu",
 				key: "MENU",
                 size: 100
 			},
@@ -44,8 +45,10 @@ class Controls extends Phaser.Scene {
 	}
 	create() {
 		// Import sounds
-        this.scroll = this.sound.add('minecraft_menu_click')
-        this.select = this.sound.add('select')
+        this.scroll = this.sound.add('minecraft_menu_click');
+        this.select = this.sound.add('select');
+        this.victory = this.sound.add('victory');
+        this.victory.play();
 
 		let bg = this.add.image(0, 0, 'background');
 		bg.setOrigin(0);
@@ -85,4 +88,4 @@ class Controls extends Phaser.Scene {
 	}
 }
 
-export default Controls;
+export default Victory;

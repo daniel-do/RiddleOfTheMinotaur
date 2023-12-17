@@ -2,8 +2,6 @@
 
 import Player from '../sprites/Player.js';
 
-let keyONE, keyTWO, keyTHREE;
-
 class Level extends Phaser.Scene {
 
     constructor (config)
@@ -27,7 +25,6 @@ class Level extends Phaser.Scene {
 
         this.exits = [];
         this.cameras.main.setBackgroundColor('#00FF00');
-
     }
 
     postCreate()
@@ -85,7 +82,11 @@ class Level extends Phaser.Scene {
                 this.sys.game.config.height = 1125;
                 this.sys.canvas.style.width = 1125 + 'px';
                 this.sys.canvas.style.height = 730 + 'px';
-                this.scene.start("MENU");
+                if (this.player.x >= 4000) {
+                    this.scene.start("VICTORY");
+                } else {
+                    this.scene.start("MENU");
+                }
             }
         }
     }

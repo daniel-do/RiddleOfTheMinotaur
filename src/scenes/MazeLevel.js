@@ -2,7 +2,7 @@
 
 import Level from './Level.js';
 
-let keyONE, keyTWO, keyTHREE;
+let keyONE, keyTWO, keyTHREE, keyR;
 
 class MazeLevel extends Level {
 
@@ -24,9 +24,10 @@ class MazeLevel extends Level {
         this.load.image('prompt5', './assets/prompt5.png');
         this.load.image('prompt6', './assets/prompt6.png');
         this.load.image('prompt7', './assets/prompt7.png');
+        this.load.image('prompt8', './assets/prompt8.png');
         this.load.image('promptLast', './assets/prompt1.png');
-        this.load.audio('correctAnswer', './assets/correct_answer.mp3')
-        this.load.audio('wrongAnswer', './assets/wrong_answer.mp3')
+        this.load.audio('correctAnswer', './assets/correct_answer.mp3');
+        this.load.audio('wrongAnswer', './assets/wrong_answer.mp3');
 	}
 
     create()
@@ -78,6 +79,7 @@ class MazeLevel extends Level {
         this.dragon5 = this.add.image(2112, 960, 'dragon').setScale(0.2);
         this.dragon6 = this.add.image(3904, 960, 'dragon').setScale(0.2);
         this.dragon7 = this.add.image(4032, 832, 'dragon').setScale(0.2);
+        this.dragon8 = this.add.image(2624, 448, 'dragon').setScale(0.2);
         this.dragonLast = this.add.image(3904, 832, 'dragon').setScale(0.2);
         this.prompt1 = this.add.image(this.dragon1.x, this.dragon1.y, 'prompt1');
         this.prompt1.setVisible(false);
@@ -93,6 +95,8 @@ class MazeLevel extends Level {
         this.prompt6.setVisible(false);
         this.prompt7 = this.add.image(this.dragon7.x - 100, this.dragon7.y, 'prompt7');
         this.prompt7.setVisible(false);
+        this.prompt8 = this.add.image(this.dragon8.x, this.dragon8.y, 'prompt8');
+        this.prompt8.setVisible(false);
         this.promptLast = this.add.image(this.dragonLast.x, this.dragonLast.y, 'promptLast');
         this.promptLast.setVisible(false);
 
@@ -103,23 +107,29 @@ class MazeLevel extends Level {
         this.prompt5Activated = false;
         this.prompt6Activated = false;
         this.prompt7Activated = false;
+        this.prompt8Activated = false;
         this.promptLastActivated = false;
 
         // define keys
         keyONE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
         keyTWO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
         keyTHREE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
 
         // Import sounds
         this.correctAnswer = this.sound.add('correctAnswer', {volume: 0.25});
         this.wrongAnswer = this.sound.add('wrongAnswer', {volume: 3});
-
     }
 
     update(time, delta)
     {
         this.player.update(this.controls, time, delta);
         this.checkExits();
+
+        // reset level
+        if (Phaser.Input.Keyboard.JustDown(keyR)) {
+            this.scene.restart();
+        }
 
         // move dragons up and down
         this.dragon1.y = 192 + (Math.sin(this.game.loop.frame * 0.04) * 10);
@@ -129,6 +139,7 @@ class MazeLevel extends Level {
         this.dragon5.y = 960 + (Math.sin(this.game.loop.frame * 0.04) * 10);
         this.dragon6.y = 960 + (Math.sin(this.game.loop.frame * 0.04) * 10);
         this.dragon7.y = 832 + (Math.sin(this.game.loop.frame * 0.04) * 10);
+        this.dragon8.y = 448 + (Math.sin(this.game.loop.frame * 0.04) * 10);
         this.dragonLast.y = 832 + (Math.sin(this.game.loop.frame * 0.04) * 10);
 
         // best university
@@ -296,6 +307,30 @@ class MazeLevel extends Level {
                     this.prompt7.setVisible(false);
                     this.prompt7Activated = true;
                     this.correctAnswer.play();
+                }
+            }
+        }
+
+        // weeks in a year
+        if (this.prompt8Activated == false) {
+            if (this.player.x >= (this.dragon8.x - 30) && this.player.x <= (this.dragon8.x + 30) && this.player.y >= (this.dragon8.y - 30) && this.player.y <= (this.dragon8.y + 30)) {
+                this.prompt8.setVisible(true);
+                this.dragon8.destroy();
+
+                if (Phaser.Input.Keyboard.JustDown(keyONE)) { // correct answer
+                    this.prompt8.setVisible(false);
+                    this.prompt8Activated = true;
+                    this.correctAnswer.play();
+                } else if (Phaser.Input.Keyboard.JustDown(keyTWO)) {
+                    this.prompt8.setVisible(false);
+                    this.prompt8Activated = true;
+                    this.wrongAnswer.play();
+                    this.scene.restart();
+                } else if (Phaser.Input.Keyboard.JustDown(keyTHREE)) {
+                    this.prompt8.setVisible(false);
+                    this.prompt8Activated = true;
+                    this.wrongAnswer.play();
+                    this.scene.restart();
                 }
             }
         }

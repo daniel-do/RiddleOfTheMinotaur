@@ -7,6 +7,7 @@ import Load from './scenes/Load.js';
 import Menu from './scenes/Menu.js';
 import Controls from './scenes/Controls.js';
 import Credits from './scenes/Credits.js';
+import Victory from './scenes/Victory.js';
 import Boot from './scenes/Boot.js';
 import Preloader from './scenes/Preloader.js';
 import StartPosition from './plugins/StartPosition.js';
@@ -52,7 +53,8 @@ var config = {
         Credits,
         Boot,
         Preloader,
-        MazeLevel
+        MazeLevel,
+        Victory
     ]
 };
 
