@@ -9,7 +9,7 @@ class MazeLevel extends Level {
     constructor (config)
     {
         super((config) ? config : { key: 'mazelevel' });
-        this.prefabShardWidth = 128; // 16 tiles of 8 pixels
+        this.prefabShardWidth = 128;
         this.prefabShardHeight = 128;
         this.prefabMapWidth = 0;
         this.prefabMapHeight = 0;
@@ -39,20 +39,17 @@ class MazeLevel extends Level {
 
         // generate the maze 
         let maze = this.maze.generate(32, 8);
-        // make the topLeft and bottomRight of the maze open so we can add exits
+        // add exits
         this.maze.openTopLeft();
         this.maze.openBottomRight();
 
         // calculate total size in pixels
         this.prefabMapWidth = this.prefabShardWidth * this.maze.gridWidth;
         this.prefabMapHeight = this.prefabShardHeight * this.maze.gridHeight;
-        // clip the camera and physics,
-        // make the camera a little smaller
-        // so the player can walk off the screen
+
         this.cameras.main.setBounds(16, 0, this.prefabMapWidth - 32, this.prefabMapHeight);
         this.physics.world.setBounds(0, 0, this.prefabMapWidth, this.prefabMapHeight);
 
-        // get the merged tile data
         let tiledata = this.maze.createMapData({ key: 'map', shardW: 16, shardH: 16 });
 
         // create the map
@@ -68,8 +65,7 @@ class MazeLevel extends Level {
 
         this.cameras.main.setBackgroundColor('#8190A7');
 
-        // (see Level.js)
-        this.postCreate();
+        this.cameras.main.flash(3000, fadeColor.r, fadeColor.g, fadeColor.b);
 
         // import images
         this.dragon1 = this.add.image(192, 192, 'dragon').setScale(0.2);
@@ -116,7 +112,7 @@ class MazeLevel extends Level {
         keyTHREE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
         keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
 
-        // Import sounds
+        // import sounds
         this.correctAnswer = this.sound.add('correctAnswer', {volume: 0.25});
         this.wrongAnswer = this.sound.add('wrongAnswer', {volume: 3});
     }

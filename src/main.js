@@ -8,19 +8,13 @@ import Menu from './scenes/Menu.js';
 import Controls from './scenes/Controls.js';
 import Credits from './scenes/Credits.js';
 import Victory from './scenes/Victory.js';
-import Boot from './scenes/Boot.js';
-import Preloader from './scenes/Preloader.js';
 import StartPosition from './plugins/StartPosition.js';
 import SimplePlatformerControls from './plugins/SimplePlatformerControls.js';
 import MazePlugin from './plugins/MazePlugin.js';
 import MazeLevel from './scenes/MazeLevel.js';
 
 window.fadeColor = { r: 5, g: 4, b: 4 };
-
 window.maxSize = 960;
-
-let longestSide = Math.max(window.innerWidth, window.innerHeight);
-let zoom = 2 * Math.max(1, Math.floor(longestSide / window.maxSize));
 
 var config = {
     type: Phaser.AUTO,
@@ -29,7 +23,6 @@ var config = {
     height: 730,
     backgroundColor: '#8190A7',
     pixelArt: true,
-    zoom: zoom,
     physics: {
         default: 'arcade',
         arcade: {}
@@ -51,8 +44,6 @@ var config = {
         Menu,
         Controls,
         Credits,
-        Boot,
-        Preloader,
         MazeLevel,
         Victory
     ]

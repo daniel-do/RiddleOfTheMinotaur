@@ -13,6 +13,12 @@ class Load extends Phaser.Scene {
     this.load.audio('minecraft_open_door', './assets/minecraft_open_door.mp3') 
     this.load.audio('select', './assets/select.mp3') 
 
+    this.load.image('tiles', 'assets/tiles.png');
+    for (let m = 0; m < 16; m++) {
+        this.load.tilemapTiledJSON('map' + m, 'assets/map' + m + '.json');
+    }
+    this.load.spritesheet('player', 'assets/player.png', { frameWidth: 32, frameHeight: 32 });
+
   }
   create(){
     this.scene.start('MENU');

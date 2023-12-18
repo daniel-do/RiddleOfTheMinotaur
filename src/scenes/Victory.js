@@ -15,7 +15,7 @@ class Victory extends Phaser.Scene {
 		this.choices = [
 			{
 				name: "congrats",
-				key: "CREDITS",
+				key: "mazelevel",
                 size: 200
 			},
             {
@@ -33,7 +33,7 @@ class Victory extends Phaser.Scene {
 			},
 			{
 				name: "play again",
-				key: "boot",
+				key: "mazelevel",
                 size: 100
 			},
 			{

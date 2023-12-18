@@ -14,7 +14,7 @@ class Menu extends Phaser.Scene {
 		this.choices = [
 			{
 				name: "play",
-				key: "boot",
+				key: "mazelevel",
 				size: 80
 			},
 			{
